@@ -21,6 +21,7 @@ def _auto_generate():
     length = get_setting("auto_length", "60秒")
     style = get_setting("auto_style", "口语化")
     purpose = get_setting("auto_purpose", "涨粉")
+    content_format = get_setting("auto_content_format", "单人口播")
 
     today_str = datetime.now().strftime("%Y-%m-%d")
     generated = []
@@ -31,7 +32,8 @@ def _auto_generate():
                 topic=f"{topic} {today_str}",
                 length=length,
                 style=style,
-                purpose=purpose
+                purpose=purpose,
+                content_format=content_format
             )
             title = f"【自动】{today_str} 第{i+1}条 - {topic}"
             save_copy(title, result, mode="free", length=length, style=style, purpose=purpose)
